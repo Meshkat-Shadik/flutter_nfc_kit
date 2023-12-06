@@ -22,6 +22,8 @@ add_library(${PLUGIN_NAME} SHARED
   ${PLUGIN_SOURCES}
 )
 
+add_subdirectory("pcsc-interface")
+
 # Apply a standard set of build settings that are configured in the
 # application-level CMakeLists.txt. This can be removed for plugins that want
 # full control over build settings.
@@ -40,6 +42,12 @@ target_include_directories(${PLUGIN_NAME} INTERFACE
   "${CMAKE_CURRENT_SOURCE_DIR}/include")
 target_link_libraries(${PLUGIN_NAME} PRIVATE flutter)
 target_link_libraries(${PLUGIN_NAME} PRIVATE PkgConfig::GTK)
+target_link_libraries(${PLUGIN_NAME} PRIVATE pcsc-interface)
+# get_target_property(PCSC_INTERFACE_INCLUDES pcsc-interface INCLUDE_DIRECTORIES)
+# message(STATUS "PCSC_INTERFACE_INCLUDES: ${PCSC_INTERFACE_INCLUDES}")
+# target_include_directories(${PLUGIN_NAME} PRIVATE ${PCSC_INTERFACE_INCLUDES})
+# get_target_property(PLUGIN_INCLUDES ${PLUGIN_NAME} INCLUDE_DIRECTORIES)
+# message(STATUS "PLUGIN_INCLUDES: ${PLUGIN_INCLUDES}")
 
 # List of absolute paths to libraries that should be bundled with the plugin.
 # This list could contain prebuilt libraries, or libraries created by an
@@ -85,6 +93,7 @@ target_include_directories(${TEST_RUNNER} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
 target_link_libraries(${TEST_RUNNER} PRIVATE flutter)
 target_link_libraries(${TEST_RUNNER} PRIVATE PkgConfig::GTK)
 target_link_libraries(${TEST_RUNNER} PRIVATE gtest_main gmock)
+target_link_libraries(${TEST_RUNNER} PRIVATE pcsc-interface)
 
 # Enable automatic test discovery.
 include(GoogleTest)

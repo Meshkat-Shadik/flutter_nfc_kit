@@ -13,6 +13,8 @@
 #include <memory>
 #include <sstream>
 
+#include <pcsc-interface.h>
+
 namespace flutter_nfc_kit {
 
 // static
@@ -54,6 +56,11 @@ void FlutterNfcKitPlugin::HandleMethodCall(
   } else {
     result->NotImplemented();
   }
+
+  // TODO: implement method channel handlers for flutter_nfc_kit
+  // consider use PC/SC API on Windows in <winscard.h>
+  // https://learn.microsoft.com/en-us/windows/win32/secauthn/smart-card-and-reader-access-functions
+  pcsc_interface::available();
 }
 
 }  // namespace flutter_nfc_kit
