@@ -36,3 +36,7 @@ flutter:
       web:
         pluginClass: FlutterNfcKitWeb
         fileName: flutter_nfc_kit_web.dart
+      windows:
+        pluginClass: FlutterNfcKitPlugin
+      linux:
+        pluginClass: FlutterNfcKitPlugin
