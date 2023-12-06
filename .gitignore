@@ -16,3 +16,4 @@ doc
 pubspec.lock
 !example/pubspec.lock
 
+generated_plugin*
