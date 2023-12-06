@@ -30,7 +30,7 @@ add_library(${PLUGIN_NAME} SHARED
   ${PLUGIN_SOURCES}
 )
 
-add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../pcsc-interface")
+add_subdirectory("pcsc-interface")
 
 # Apply a standard set of build settings that are configured in the
 # application-level CMakeLists.txt. This can be removed for plugins that want
@@ -95,6 +95,7 @@ add_custom_command(TARGET ${TEST_RUNNER} POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy_if_different
   "${FLUTTER_LIBRARY}" $<TARGET_FILE_DIR:${TEST_RUNNER}>
 )
+target_link_libraries(${TEST_RUNNER} PRIVATE pcsc-interface)
 
 # Enable automatic test discovery.
 include(GoogleTest)

@@ -57,9 +57,7 @@ void FlutterNfcKitPlugin::HandleMethodCall(
     result->NotImplemented();
   }
 
-  // TODO: implement method channel handlers for flutter_nfc_kit
-  // consider use PC/SC API on Windows in <winscard.h>
-  // https://learn.microsoft.com/en-us/windows/win32/secauthn/smart-card-and-reader-access-functions
+  // TODO: implement method channel handlers for flutter_nfc_kit using pcsc-interface
   pcsc_interface::available();
 }
 

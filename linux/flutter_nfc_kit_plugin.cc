@@ -33,11 +33,9 @@ static void flutter_nfc_kit_plugin_handle_method_call(
   } else {
     response = FL_METHOD_RESPONSE(fl_method_not_implemented_response_new());
   }
-  pcsc_interface::available();
 
-  // TODO: implement method channel handlers for flutter_nfc_kit
-  // consider use libpcsclite on Linux
-  // https://pcsclite.apdu.fr/api/group__API.html
+  // TODO: implement method channel handlers for flutter_nfc_kit using pcsc-interface
+  pcsc_interface::available();
 
   fl_method_call_respond(method_call, response, nullptr);
 }
